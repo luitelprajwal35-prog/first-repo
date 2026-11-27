@@ -1,0 +1,348 @@
+/* =========================================================
+    CLASS 1 STARTER - PSEUDO-CLASSES, TRANSITIONS, POSITION
+    =========================================================
+    Everything you already know (layout, colours, fonts) is
+    filled in. Your job is the 16 TODOs, plus one bonus. 
+    Work top to bottom, and SAVE + REFRESH after every TODO
+    so you can see exactly what each line does. 
+
+    Quick reminders:
+      - Pseudo-class = one colon, no spaces:   .card:hover
+      - Put `transition` on the NORMAL rule, not on :hover
+      - top / right / bottom / left need `position` first
+    ========================================================= */
+
+/* ---------------------------------------------------------
+    BASE STYLES - already done for you
+    --------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6fb;
+  color: #0f1729;
+  margin: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #0f1729;
+}
+
+a {
+  color: #2965f1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section {
+  padding: 20px 40px;
+}
+
+.intro {
+  text-align: center;
+  padding: 40px 20px 10px;
+}
+
+/* ---------------------------------------------------------
+    1. NAVBAR — sticky + hover links
+    --------------------------------------------------------- */
+.navbar {
+  background-color: #ffffff;
+  padding: 15px 30px;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+ /* TODO 1: make the navbar STICK to the top of the screen
+     when you scroll.
+     (Hint: you need THREE lines:
+        position: sticky;
+     
+        top: 0;          <- "stick when you're 0px from the top"
+        z-index: 100;    <- keeps it on top of the cards)
+     After writing it, scroll down. Then try deleting the
+     z-index line and scroll again. What happens to the badge? */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  padding-bottom: 4px;
+  border-bottom: 3px solid transparent; /* invisible for now, so the hover doesn't shift the layout */
+
+   /* TODO 2: add a TRANSITION so colour changes glide instead of snapping.
+     (Hint: transition: color 0.3s ease, border-color 0.3s ease;)
+     Remember: transition goes HERE on the normal rule,
+     not inside :hover. */
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* TODO 3: when the mouse is over a nav link, change its
+   colour to #e44d26 AND change its border-bottom-color
+   to #e44d26 so an underline appears.
+   (Hint: the selector is .nav-links a:hover) */
+.nav-links a:hover {
+  color: #e44d26;
+  border-bottom-color: #e44d26;
+}
+
+/* ---------------------------------------------------------
+    2. CARDS — hover lift + "New" badge
+    --------------------------------------------------------- */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.subject-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 2px solid #06b6d4;
+  border-radius: 8px;
+
+  /* TODO 4: add a transition for BOTH transform and box-shadow,
+     0.3s long. Separate the two properties with a comma.
+     (Hint: transition: transform 0.3s ease, box-shadow 0.3s ease;) */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* TODO 6: this card holds the badge, so make it the ANCHOR.
+     (Hint: position: relative;)
+     Nothing will visibly move. It just gives the badge
+     something to attach itself to. Do TODO 7 next. */
+  position: relative;
+}
+
+/* TODO 5: when a card is hovered, LIFT it up and add a shadow.
+   (Hints:
+      transform: translateY(-6px);      <- negative = up
+      box-shadow: 0 12px 24px rgba(15, 23, 41, 0.15);) */
+.subject-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(15, 23, 41, 0.15);
+}
+
+.badge {
+  background-color: #e44d26;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 999px;
+
+  /* TODO 7: pin the badge to the top-right corner of the card.
+     (Hints:
+        position: absolute;
+        top: -10px;     <- negative = poke OUT above the edge
+        right: -10px;)
+     Before you do TODO 6, try TODO 7 alone. Where does the badge
+   
+     fly to? Then add TODO 6 and watch it snap into place. */
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+/* ---------------------------------------------------------
+    3. TASK LIST — structural pseudo-classes
+    --------------------------------------------------------- */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 600px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.task-list li {
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* TODO 8: style ONLY the first task so it stands out.
+   Give it a thick left border and bold text.
+   (Hints:
+      selector:  .task-list li:first-child
+      border-left: 6px solid #e44d26;
+      font-weight: bold;) */
+.task-list li:first-child {
+  border-left: 6px solid #e44d26;
+  font-weight: bold;
+}
+
+/* TODO 9: the last task doesn't need a line under it.
+   Remove its bottom border.
+   (Hint: .task-list li:last-child   and   border-bottom: none;) */
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+/* TODO 10: zebra-stripe the list. Give every EVEN task
+   a light blue background: #eef2ff
+   (Hint: li:nth-child(even) )
+   Then try changing `even` to `odd`, and to `3n`. What changes? */
+.task-list li:nth-child(odd) {
+  background-color: #eef2ff;
+}
+
+/* ---------------------------------------------------------
+    4. FORM — focus, hover, active, focus-visible
+    --------------------------------------------------------- */
+.goal-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.goal-form {
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.goal-input {
+  flex: 1; /* makes the input take all the leftover width */
+  padding: 12px 14px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 16px;
+  
+  /* BONUS layout modification to smoothly fade in the focus outline ring */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* TODO 11: when the input is focused (clicked or tabbed into),
+   show it clearly. Change the border colour, add a soft ring,
+   and hide the default browser outline, because your ring replaces it.
+   (Hints:
+      border-color: #2965f1;
+      box-shadow: 0 0 0 4px rgba(41, 101, 241, 0.2);
+      outline: none;)
+   Bonus: add `transition: border-color 0.2s, box-shadow 0.2s;`
+   to the NORMAL .goal-input rule above so the ring fades in. */
+.goal-input:focus {
+  border-color: #f1294e;
+  box-shadow: 0 0 0 4px rgba(41, 101, 241, 0.2);
+  outline: none;
+}
+
+.btn {
+  background-color: #2965f1;
+  color: #ffffff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+
+  /* TODO 12: two things on the normal rule:
+     (a) show the hand icon:   cursor: pointer;
+     (b) a 0.2s transition for background-color AND transform.
+         (Hint: transition: background-color 0.2s ease, transform 0.2s ease;) */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* TODO 13: on hover, make the button a darker blue: #1d4ed8 */
+.btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* TODO 14: while the button is being PRESSED, shrink it a little
+   so it feels "pushed in".
+   (Hint: transform: scale(0.96);) */
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* TODO 15: keyboard users need to see where they are.
+   Press Tab until the button is focused. Then write a clear
+   ring that only appears for KEYBOARD focus.
+   (Hints:
+      outline: 3px solid #e44d26;
+      outline-offset: 3px;) */
+.btn:focus-visible {
+  outline: 3px solid #e44d26;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+    5. TIPS — no TODO, this just makes the page long enough to scroll
+    --------------------------------------------------------- */
+.tips {
+  max-width: 700px;
+}
+
+/* ---------------------------------------------------------
+    6. BACK TO TOP — fixed position
+    --------------------------------------------------------- */
+.back-to-top {
+  background-color: #0f1729;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  /* TODO 16: glue this button to the bottom-right corner of the
+     BROWSER WINDOW, so it stays there while you scroll.
+     (Hints:
+        position: fixed;
+        bottom: 20px;
+        right: 20px;)
+     Before you write it, notice where the button sits on the page. */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* ---------------------------------------------------------
+    7. FOOTER — already styled
+    --------------------------------------------------------- */
+.site-footer {
+  background-color: #0f1729;
+  color: #ffffff;
+  padding: 20px 30px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer p {
+  color: #ffffff;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #06b6d4;
+  /* BONUS (no hints this time):
+     Make the footer links turn cyan (#06b6d4) on hover, with a smooth
+     transition. You'll need a transition here AND a :hover rule
+     below. */
+}

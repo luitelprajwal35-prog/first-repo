@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class 1 Practice — Make the Page Feel Alive</title>
+
+    <!-- 👉 While practicing, point this at class1-starter.css.
+       When you want to see the finished version, point it at class1-complete.css -->
+    <link rel="stylesheet" href="final.css" />
+  </head>
+  <body>
+    <!-- ============================================
+       1. NAVBAR — will become STICKY, with hover links
+       (TODO 1, 2, 3)
+  ============================================= -->
+    <header class="navbar" id="top">
+      <div class="logo">📚 StudyHub</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Subjects</a>
+        <a href="#">Progress</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <h1>Make the page feel alive</h1>
+      <p>
+        Hover over things, press things, Tab through things, and scroll down.
+      </p>
+    </section>
+
+    <!-- ============================================
+       2. CARDS — hover lift + a "New" badge
+       (TODO 4, 5, 6, 7)
+  ============================================= -->
+    <section class="section">
+      <h2>Your Subjects</h2>
+      <div class="subject-grid">
+        <div class="subject-card">
+          <span class="badge">New</span>
+          <h3>Computer Science</h3>
+          <p>HTML, CSS, JavaScript</p>
+        </div>
+        <div class="subject-card">
+          <span class="badge">Next</span>
+          <h3>Mathematics</h3>
+          <p>Algebra, Geometry, Calculus</p>
+        </div>
+        <div class="subject-card">
+          <span class="badge">Fun</span>
+          <h3>Science</h3>
+          <p>Physics, Chemistry, Biology</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+       3. TASK LIST — structural pseudo-classes
+       (TODO 8, 9, 10)
+  ============================================= -->
+    <section class="section">
+      <h2>Today's Study Tasks</h2>
+      <ul class="task-list">
+        <li>Revise algebra formulas</li>
+        <li>Read Chapter 4 of Physics</li>
+        <li>Practice 10 grammar questions</li>
+        <li>Sketch a colour wheel</li>
+        <li>Finish the CSS practice page</li>
+      </ul>
+    </section>
+
+    <!-- ============================================
+       4. FORM — :focus, :hover, :active, :focus-visible
+       (TODO 11, 12, 13, 14, 15)
+  ============================================= -->
+    <section class="section">
+      <h2>Add a New Goal</h2>
+      <label for="goal" class="goal-label">Goal</label>
+      <div class="goal-form">
+        <input
+          type="text"
+          id="goal"
+          class="goal-input"
+          placeholder="e.g. Finish the CSS practice"
+        />
+        <button class="btn">Add Goal</button>
+      </div>
+    </section>
+
+    <!-- ============================================
+       5. TIPS — just enough text to make the page scroll,
+       so you can SEE the sticky navbar and fixed button work.
+  ============================================= -->
+    <section class="section tips">
+      <h2>Study Tips</h2>
+      <p>
+        Study in short blocks of 25 minutes, then take a five minute break. Your
+        brain keeps information better when it gets regular rest.
+      </p>
+      <p>
+        Explain what you learned out loud, as if you were teaching a friend. If
+        you get stuck, that is the exact part to review again.
+      </p>
+      <p>
+        Keep your phone in another room while you study. Even a silent phone on
+        the desk pulls your attention away.
+      </p>
+      <p>
+        Write down three things you want to finish before you sit down. A small,
+        clear list is easier to start than a vague plan.
+      </p>
+      <p>
+        Sleep matters more than one extra hour of cramming. Memory is stored
+        while you rest.
+      </p>
+      <p>
+        When you finish a task, tick it off. Seeing progress is a real
+        motivator.
+      </p>
+    </section>
+
+    <!-- ============================================
+       6. BACK TO TOP — will become FIXED
+       (TODO 16)
+  ============================================= -->
+    <a href="#top" class="back-to-top">↑ Top</a>
+
+    <!-- ============================================
+       7. FOOTER — bonus practice
+  ============================================= -->
+    <footer class="site-footer">
+      <p>&copy; 2026 StudyHub</p>
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+    </footer>
+  </body>
+</html>
